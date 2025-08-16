@@ -1,0 +1,9 @@
+id: telegram
+name: "Telegram bot api"
+description: "A simple telegram bot plugin"
+author: "Micholis Code"
+version: 0.1
+svintVersion: 0.1
+dependencies:
+  WordMaster: 0.1
+optionalDependencies: {}

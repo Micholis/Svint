@@ -1,0 +1,65 @@
+[2025-08-16 11:54:36,878] (INFO) Hello coder!
+[2025-08-16 11:54:36,879] (DEBUG) Oh, it looks like something went wrong for you to decide to turn on the debugger
+[2025-08-16 11:54:36,879] (INFO) Registered new multicall event: core.loaded
+[2025-08-16 11:54:36,879] (INFO) Loading all plugins...
+[2025-08-16 11:54:36,880] (INFO) Loading plugin telegram
+[2025-08-16 11:54:36,881] (DEBUG) Hello telegram 0.1!
+[2025-08-16 11:54:36,881] (DEBUG) Checking svint version
+[2025-08-16 11:54:36,882] (DEBUG) Loading dependencies...
+[2025-08-16 11:54:36,882] (DEBUG) loading dependence WordMaster
+[2025-08-16 11:54:36,882] (INFO) Loading plugin WordMaster
+[2025-08-16 11:54:36,883] (DEBUG) Hello WordMaster 0.1!
+[2025-08-16 11:54:36,884] (DEBUG) Checking svint version
+[2025-08-16 11:54:36,884] (DEBUG) Loading dependencies...
+[2025-08-16 11:54:36,884] (DEBUG) All dependencies are safely loaded!
+[2025-08-16 11:54:36,884] (DEBUG) Now we're finally downloading this fucking plugin
+[2025-08-16 11:54:36,888] (INFO) Registered new single event: WordMaster.registerWord
+[2025-08-16 11:54:36,888] (INFO) Adding new event listener for event WordMaster.registerWord
+[2025-08-16 11:54:36,888] (INFO) Registered new single event: WordMaster.getWord
+[2025-08-16 11:54:36,888] (INFO) Adding new event listener for event WordMaster.getWord
+[2025-08-16 11:54:36,888] (INFO) Safely loaded WordMaster
+[2025-08-16 11:54:36,889] (DEBUG) All dependencies are safely loaded!
+[2025-08-16 11:54:36,889] (DEBUG) Now we're finally downloading this fucking plugin
+[2025-08-16 11:54:39,501] (DEBUG) Calling event WordMaster.registerWord from telegram
+[2025-08-16 11:54:39,502] (DEBUG) Words for telegram is already exist, ignoring
+[2025-08-16 11:54:39,502] (INFO) Adding new event listener for event core.loaded
+[2025-08-16 11:54:39,502] (INFO) Safely loaded telegram
+[2025-08-16 11:54:39,502] (DEBUG) WordMaster is already installed.
+[2025-08-16 11:54:39,503] (INFO) All plugins are safely loaded!
+[2025-08-16 11:54:39,503] (INFO) Svint: 0.1
+[2025-08-16 11:54:39,503] (INFO)   - Plugins:
+[2025-08-16 11:54:39,503] (INFO)     - WordMaster: 0.1
+[2025-08-16 11:54:39,503] (INFO)     - telegram: 0.1
+[2025-08-16 11:54:39,503] (INFO)   - Now registered events:
+[2025-08-16 11:54:39,503] (INFO)     - core.loaded (MULTICALL) 
+[2025-08-16 11:54:39,504] (INFO)     - WordMaster.registerWord (SINGLE) 
+[2025-08-16 11:54:39,504] (INFO)     - WordMaster.getWord (SINGLE) 
+[2025-08-16 11:54:39,504] (DEBUG) Calling event core.loaded from core
+[2025-08-16 11:54:39,504] (DEBUG) Svint loaded!
+[2025-08-16 11:54:39,504] (DEBUG) Calling event WordMaster.getWord from telegram
+[2025-08-16 11:54:39,506] (ERROR) Oh, it looks like everything went wrong, Svint can't figure out the reason, it looks like you're going to do it, good luck;) 
+Traceback (most recent call last):
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/main.py", line 26, in <module>
+    main()
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/main.py", line 22, in main
+    plugins.callEvent("core", "core.loaded")
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/pluginManager.py", line 82, in callEvent
+    callback(eventBody)
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/plugins/telegram/__init__.py", line 15, in OnSvintLoaded
+    logging.info(WordMaster.getWord("startMessage"))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/plugins/telegram/WordMaster.py", line 9, in getWord
+    return tgClass._callEvent("WordMaster.getWord", word=name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/SvintTypes/plugin.py", line 25, in _callEvent
+    return self.Svint.callEvent(self.id, eventName, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/pluginManager.py", line 85, in callEvent
+    return event.callback(eventBody)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/micholis/Windows/Users/aleks_qmqdhu0/Documents/alexeevAndrew/Svint/plugins/WordMaster/__init__.py", line 33, in getWord
+    word = words.get(event.params.get("word"))
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+[2025-08-16 11:54:39,510] (CRITICAL) Oh! Svint is crashed! Try drinking some coffee and starting over.
+[2025-08-16 11:54:39,511] (DEBUG) Did you enable debugging? You clearly knew that you would break everything, but the important thing is to realize your mistake and try again)    
