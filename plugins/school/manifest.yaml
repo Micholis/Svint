@@ -1,0 +1,10 @@
+id: school
+name: "School assistant"
+description: "A simple school plugin"
+author: "Micholis Code"
+version: 0.1
+svintVersion: 0.1
+dependencies: {}
+optionalDependencies:
+  telegram: 0.1
+defaultConfig: {}

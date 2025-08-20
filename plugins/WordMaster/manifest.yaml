@@ -1,8 +1,0 @@
-id: WordMaster
-name: "WordMaster"
-description: "A simple localisation plugin"
-author: "Micholis Code"
-version: 0.1
-svintVersion: 0.1
-dependencies: {}
-optionalDependencies: {}

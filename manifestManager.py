@@ -8,7 +8,8 @@ class SvintManifest:
         if not "config.yaml" in os.listdir():
             with open("config.yaml", "w") as f:
                 yaml.safe_dump({
-                    "logging-level": "INFO"
+                    "logging-level": "INFO",
+                    "logging-format": "SHORT"
                 }, f)
         with open("config.yaml", "r", encoding="UTF-8") as f:
             self.config = yaml.safe_load(f)
@@ -40,3 +41,6 @@ class PluginManifest:
     
     def getID(self):
         return self.config.get("id")
+    
+    def getConfig(self):
+        return self.config.get("defaultConfig")
