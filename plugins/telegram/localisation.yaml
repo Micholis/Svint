@@ -1,1 +1,3 @@
 startMessage: "Привет!"
+svintLoaded: "Svint инициализирован, плагины загружены!"
+getID: "Ваш id: {id}" # {id} - id пользователя

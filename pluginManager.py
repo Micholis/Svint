@@ -11,7 +11,7 @@ class pluginManager:
         self.loadedPlugins = {}
         self.registeredEvents = {}
 
-    def loadPlugin(self, pluginName):
+    async def loadPlugin(self, pluginName):
         if pluginName in self.loadedPlugins.keys(): 
             logging.debug(f"{pluginName} is already installed.")
             return self.loadedPlugins.get(pluginName)["version"]
@@ -37,7 +37,7 @@ class pluginManager:
             logging.debug(f"loading dependence {dep}")
             if dep in self.loadedPlugins.keys() and self.loadedPlugins[dep]["version"] >= version: 
                 logging.debug(f"{dep} is already installed.")
-            depVer = self.loadPlugin(dep)
+            depVer = await self.loadPlugin(dep)
             if depVer == None:
                 logging.fatal(f"Error when loading {pluginName}")
                 logging.fatal(f"This plugin requires plugin {dep} {version}, but it is not installed!")
@@ -52,6 +52,7 @@ class pluginManager:
         pluginModule = importlib.import_module(f"plugins.{pluginName}")
         pluginClass = getattr(pluginModule, pluginName)
         pluginInstance = pluginClass(pluginManifest, self)
+        await pluginInstance.EnableAsync()
         self.loadedPlugins[pluginName] = {
             "id": pluginName,
             "version": pluginManifest.getVersion(),
@@ -61,10 +62,10 @@ class pluginManager:
 
         return pluginManifest.getVersion()
 
-    def loadAllPluggins(self):
+    async def loadAllPluggins(self):
         logging.info("Loading all plugins...")
         for plugin in os.listdir("plugins"):
-            self.loadPlugin(plugin)
+            await self.loadPlugin(plugin)
         logging.info("All plugins are safely loaded!")
 
     def callEvent(self, caller, eventName, **kwargs):

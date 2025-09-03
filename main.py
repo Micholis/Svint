@@ -2,7 +2,7 @@ import logging
 import utils
 import asyncio
 
-def load():
+async def main():
     import manifestManager
     import pluginManager
     
@@ -13,7 +13,9 @@ def load():
     plugins = pluginManager.pluginManager()
     plugins.registerEvent("core", "loaded")
     plugins.registerEvent("core", "tick")
-    plugins.loadAllPluggins()
+    plugins.registerEvent("core", "loaded.async", asyncCallback=True)
+    plugins.registerEvent("core", "tick.async", asyncCallback=True)
+    await plugins.loadAllPluggins()   
     logging.info(f"Svint: {utils.SVINT_VERSION}")
     logging.info("  - Plugins:")
     for plugin in plugins.loadedPlugins.values():
@@ -29,15 +31,15 @@ def load():
     logging.info(r"/____/|___/_/_/ /_/\__/  ")
     logging.info("-------------------------")
     logging.info("Done! Svint is loaded!")
+
     plugins.callEvent("core", "core.loaded")
+    await plugins.asyncCallEvent("core", "core.loaded.async")
 
-    return manifest, plugins
-
-async def main():
-    manifest, plugins = load()
+    await plugins.asyncCallEvent("core", "school.getDay", date="03-04-2025")
     while True:
         await asyncio.sleep(5)
         plugins.callEvent("core", "core.tick")
+        await plugins.asyncCallEvent("core", "core.tick.async")
     
 if __name__ == "__main__":
     try:

@@ -8,3 +8,7 @@ dependencies: {}
 optionalDependencies: {}
 defaultConfig: 
   tgToken: "TOKEN"
+  adminID: 1234567890
+  includedModules:
+    getID: true
+    messageToAdminOnLoad: true

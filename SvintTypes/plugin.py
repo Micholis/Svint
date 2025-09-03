@@ -24,6 +24,9 @@ class SvintPlugin:
     def Enable(self):
         pass
 
+    async def EnableAsync(self):
+        pass
+
     def _registerEvent(self, eventName, isAsync = False):
         self.Svint.registerEvent(self.id, eventName, isAsync)
 
